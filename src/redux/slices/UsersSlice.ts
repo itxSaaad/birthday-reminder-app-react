@@ -6,7 +6,7 @@ interface UserData {
   linkedin: string;
 }
 
-interface UserState {
+export interface UserState {
   users: UserData[];
 }
 
@@ -25,7 +25,7 @@ const initialState: UserState = {
       id: nanoid(),
       name: 'Moiz Nadeem',
       age: 21,
-      dob: '22 September, 2003',
+      dob: '11 April, 2003',
       linkedin: 'https://linkedin.com/mirza-moiz',
     },
     {
