@@ -21,7 +21,7 @@ const initialState: BirthdayState = {
       age: 21,
       dob: '22 September, 2003',
       avi: '/assets/images/hassaan-avi.jpg',
-      linkedin: 'https://linkedin.com/hassaan-muneer-37990b250',
+      linkedin: 'https://www.linkedin.com/in/hassaan-muneer-37990b250/',
     },
     {
       id: nanoid(),
@@ -29,7 +29,7 @@ const initialState: BirthdayState = {
       age: 21,
       dob: '11 April, 2003',
       avi: '/assets/images/moiz-avi.jpg',
-      linkedin: 'https://linkedin.com/mirza-moiz',
+      linkedin: 'https://www.linkedin.com/in/mirza-moiz',
     },
     {
       id: nanoid(),
@@ -37,7 +37,7 @@ const initialState: BirthdayState = {
       age: 24,
       dob: '13 July, 2000',
       avi: '/assets/images/umair-avi.jpg',
-      linkedin: 'https://linkedin.com/umair-chughtai-4b096324b',
+      linkedin: 'https://www.linkedin.com/in/umair-chughtai-4b096324b',
     },
   ],
 };

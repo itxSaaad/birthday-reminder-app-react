@@ -1,13 +1,24 @@
+interface BirthListFooterProps {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAdding: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 import Button from './Button';
 
-export default function BirthListFooter() {
+export default function BirthListFooter({
+  setIsModalOpen,
+  setIsAdding,
+}: BirthListFooterProps) {
   return (
     <>
       <div className="flex flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
         <Button
           title="Add Birthday"
           type="button"
-          onClick={() => {}}
+          onClick={() => {
+            setIsModalOpen(true);
+            setIsAdding(true);
+          }}
           className="bg-[#FFFACD] text-[#333333] font-semibold text-lg hover:bg-[#FFF8B7] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
       </div>

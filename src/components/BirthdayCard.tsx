@@ -7,13 +7,17 @@ interface BirthdayCardProps {
     avi: string;
     linkedin: string;
   };
+  setIsEditing: (isEditing: boolean) => void;
 }
 
 import { useEffect, useState } from 'react';
 import { FaLinkedin, FaPen, FaTrash } from 'react-icons/fa';
 import Button from './Button';
 
-export default function BirthdayCard({ birthday }: BirthdayCardProps) {
+export default function BirthdayCard({
+  birthday,
+  setIsEditing,
+}: BirthdayCardProps) {
   const [remainingDays, setRemainingDays] = useState(0);
 
   useEffect(() => {
@@ -74,7 +78,9 @@ export default function BirthdayCard({ birthday }: BirthdayCardProps) {
         <Button
           title={<FaPen />}
           type="button"
-          onClick={() => {}}
+          onClick={() => {
+            setIsEditing(true);
+          }}
           className="bg-[#dadafc] text-white font-semibold text-lg hover:bg-[#c7c7fc]
           flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
