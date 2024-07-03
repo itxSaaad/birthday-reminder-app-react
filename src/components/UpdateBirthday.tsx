@@ -1,11 +1,21 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+interface Birthday {
+  id: string;
+  name: string;
+  age: number;
+  dob: string;
+  avi: string;
+  linkedin: string;
+}
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { addBirthday } from '../features/slices/birthdaySlice';
+import { updateBirthday } from '../features/slices/birthdaySlice';
+
 import Button from './Button';
 
-export default function AddBirthday({
+export default function UpdateBirthday({
   setIsModalOpen,
 }: {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,9 +26,31 @@ export default function AddBirthday({
   const [linkedin, setLinkedin] = useState('');
 
   const dispatch = useDispatch();
+  const selector = useSelector(
+    (state: { birthday: { birthdays: Birthday[] } }) => state.birthday
+  );
+  const birthdays = selector.birthdays;
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const idParam = searchParams.get('id');
+
+  const birthday = birthdays.find((birthday) => birthday.id === idParam);
+
+  useEffect(() => {
+    if (!birthday) {
+      alert('Birthday not found');
+      setIsModalOpen(false);
+      window.history.pushState(null, '', window.location.pathname);
+      return;
+    }
+
+    setName(birthday.name);
+    setAge(birthday.age);
+    setDob(birthday.dob);
+    setLinkedin(birthday.linkedin);
+  }, [birthday, setIsModalOpen]);
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // DAte format shoulde be (dd MMMM, yyyy)
     const dateObj = new Date(e.target.value);
     const year = dateObj.getFullYear();
     const month = dateObj.toLocaleString('default', { month: 'long' });
@@ -37,20 +69,22 @@ export default function AddBirthday({
     }
 
     dispatch(
-      addBirthday({
+      updateBirthday({
+        id: birthday!.id,
         name,
         age,
         dob,
         linkedin,
       })
     );
+    toast.success('Birthday Updated successfully');
+    window.history.pushState(null, '', window.location.pathname);
 
     setName('');
     setAge(0);
     setDob('');
     setLinkedin('');
     setIsModalOpen(false);
-    toast.success('Birthday added successfully');
   };
 
   return (
@@ -88,10 +122,8 @@ export default function AddBirthday({
       />
       <Button
         type="submit"
-        title="Add Birthday"
-        onClick={() => {
-          console.log('Add Birthday');
-        }}
+        title="Update Birthday"
+        onClick={() => {}}
         className="bg-[#FFFACD] text-[#333333] font-semibold text-lg hover:bg-[#FFF8B7] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
       />
     </form>

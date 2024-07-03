@@ -7,8 +7,11 @@ interface Birthday {
   linkedin: string;
 }
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import AddBirthday from './components/AddBirthday';
 import BirthListFooter from './components/BirthListFooter';
@@ -18,12 +21,22 @@ import Modal from './components/Modal';
 import UpdateBirthday from './components/UpdateBirthday';
 
 function App() {
-  const selector = useSelector((state) => state.birthday);
+  const selector = useSelector(
+    (state: { birthday: { birthdays: Birthday[] } }) => state.birthday
+  );
   const birthdays = selector.birthdays;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isModalOpen]);
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-[#FFC0CB] p-8">
@@ -37,6 +50,7 @@ function App() {
             key={birthday.id}
             birthday={birthday}
             setIsEditing={setIsEditing}
+            setIsModalOpen={setIsModalOpen}
           />
         ))}
 
@@ -49,13 +63,15 @@ function App() {
       {isModalOpen &&
         (isAdding ? (
           <Modal setIsModalOpen={setIsModalOpen}>
-            <AddBirthday />
+            <AddBirthday setIsModalOpen={setIsModalOpen} />
           </Modal>
         ) : isEditing ? (
           <Modal setIsModalOpen={setIsModalOpen}>
-            <UpdateBirthday />
+            <UpdateBirthday setIsModalOpen={setIsModalOpen} />
           </Modal>
         ) : null)}
+
+      <ToastContainer />
     </section>
   );
 }

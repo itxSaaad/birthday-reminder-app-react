@@ -8,6 +8,7 @@ interface BirthdayCardProps {
     linkedin: string;
   };
   setIsEditing: (isEditing: boolean) => void;
+  setIsModalOpen: (isModalOpen: boolean) => void;
 }
 
 import { useEffect, useState } from 'react';
@@ -17,6 +18,7 @@ import Button from './Button';
 export default function BirthdayCard({
   birthday,
   setIsEditing,
+  setIsModalOpen,
 }: BirthdayCardProps) {
   const [remainingDays, setRemainingDays] = useState(0);
 
@@ -53,7 +55,12 @@ export default function BirthdayCard({
       <div className="flex flex-col items-start justify-center">
         <h2 className="text-xl font-bold text-[#333333] flex items-center gap-2">
           {birthday.name}
-          <a href={birthday.linkedin} target="_blank" rel="noreferrer noopener">
+          <a
+            title="LinkedIn Profile"
+            href={birthday.linkedin}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <FaLinkedin className="text-[#0077B5] text-2xl" />
           </a>
         </h2>
@@ -80,6 +87,8 @@ export default function BirthdayCard({
           type="button"
           onClick={() => {
             setIsEditing(true);
+            setIsModalOpen(true);
+            window.history.pushState(null, '', `?id=${birthday.id}`);
           }}
           className="bg-[#dadafc] text-white font-semibold text-lg hover:bg-[#c7c7fc]
           flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
