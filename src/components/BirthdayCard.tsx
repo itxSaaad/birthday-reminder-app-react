@@ -10,6 +10,8 @@ interface BirthdayCardProps {
 }
 
 import { useEffect, useState } from 'react';
+import { FaLinkedin, FaPen, FaTrash } from 'react-icons/fa';
+import Button from './Button';
 
 export default function BirthdayCard({ birthday }: BirthdayCardProps) {
   const [remainingDays, setRemainingDays] = useState(0);
@@ -45,7 +47,13 @@ export default function BirthdayCard({ birthday }: BirthdayCardProps) {
         />
       </div>
       <div className="flex flex-col items-start justify-center">
-        <h2 className="text-xl font-bold text-[#333333]">{birthday.name}</h2>
+        <h2 className="text-xl font-bold text-[#333333] flex items-center gap-2">
+          {birthday.name}
+          <a href={birthday.linkedin} target="_blank" rel="noreferrer noopener">
+            <FaLinkedin className="text-[#0077B5] text-2xl" />
+          </a>
+        </h2>
+
         <h3 className="text-lg font-semibold text-[#333333]">
           {birthday.age} years old
         </h3>
@@ -55,6 +63,21 @@ export default function BirthdayCard({ birthday }: BirthdayCardProps) {
         ) : (
           <p className="text-[#333333]">Happy Birthday 🎉</p>
         )}
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4 ml-auto">
+        <Button
+          title={<FaTrash />}
+          type="button"
+          onClick={() => {}}
+          className="bg-[#F08080] text-white font-semibold text-lg hover:bg-[#E57373] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
+        />
+        <Button
+          title={<FaPen />}
+          type="button"
+          onClick={() => {}}
+          className="bg-[#dadafc] text-white font-semibold text-lg hover:bg-[#c7c7fc]
+          flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
+        />
       </div>
     </div>
   );

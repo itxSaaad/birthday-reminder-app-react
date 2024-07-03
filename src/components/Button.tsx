@@ -1,5 +1,7 @@
+import React from 'react';
+
 interface ButtonProps {
-  title: string;
+  title: string | React.ReactNode;
   type: 'button' | 'submit' | 'reset';
   onClick: () => void;
   className?: string;
