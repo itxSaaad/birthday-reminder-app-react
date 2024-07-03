@@ -1,23 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;700&display=swap');
-
-:root {
-  font-family: 'Anek Devanagari', sans-serif;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: light) {
+  font-family: 'Anek Devanagari', sans-serif;
 }
