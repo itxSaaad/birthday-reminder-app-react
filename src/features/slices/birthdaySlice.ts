@@ -80,8 +80,10 @@ const birthdaySlice = createSlice({
     },
     deleteBirthday: (state, action) => {
       state.birthdays = state.birthdays.filter(
-        (birthday) => birthday.id !== action.payload.id
+        (birthday) => birthday.id !== action.payload
       );
+
+      return state;
     },
     clearState: (state) => {
       state.birthdays = [];

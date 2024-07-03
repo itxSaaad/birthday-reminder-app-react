@@ -32,7 +32,7 @@ export default function AddBirthday({
     e.preventDefault();
 
     if (!name || !age || !dob || !linkedin) {
-      alert('Please fill all the fields');
+      toast.error('Please fill all the fields');
       return;
     }
 

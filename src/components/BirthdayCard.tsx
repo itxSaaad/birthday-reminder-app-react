@@ -13,6 +13,10 @@ interface BirthdayCardProps {
 
 import { useEffect, useState } from 'react';
 import { FaLinkedin, FaPen, FaTrash } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import { deleteBirthday } from '../features/slices/birthdaySlice';
 import Button from './Button';
 
 export default function BirthdayCard({
@@ -21,6 +25,8 @@ export default function BirthdayCard({
   setIsModalOpen,
 }: BirthdayCardProps) {
   const [remainingDays, setRemainingDays] = useState(0);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const Dob = new Date(birthday.dob);
@@ -41,7 +47,7 @@ export default function BirthdayCard({
     );
 
     setRemainingDays(remainingDays);
-  }, []);
+  }, [birthday.dob]);
 
   return (
     <div className="flex flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
@@ -79,7 +85,10 @@ export default function BirthdayCard({
         <Button
           title={<FaTrash />}
           type="button"
-          onClick={() => {}}
+          onClick={() => {
+            dispatch(deleteBirthday(birthday.id));
+            toast.success('Birthday Deleted successfully');
+          }}
           className="bg-[#F08080] text-white font-semibold text-lg hover:bg-[#E57373] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
         <Button

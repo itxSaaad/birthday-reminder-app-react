@@ -38,9 +38,9 @@ export default function UpdateBirthday({
 
   useEffect(() => {
     if (!birthday) {
-      alert('Birthday not found');
       setIsModalOpen(false);
       window.history.pushState(null, '', window.location.pathname);
+      toast.error('Birthday not found');
       return;
     }
 
@@ -64,7 +64,7 @@ export default function UpdateBirthday({
     e.preventDefault();
 
     if (!name || !age || !dob || !linkedin) {
-      alert('Please fill all the fields');
+      toast.error('Please fill all the fields');
       return;
     }
 
