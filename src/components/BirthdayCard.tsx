@@ -50,15 +50,15 @@ export default function BirthdayCard({
   }, [birthday.dob]);
 
   return (
-    <div className="flex flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
-      <div className="border-r-2 border-[#E6E6FA] pr-4">
+    <div className="flex flex-col md:flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
+      <div className="md:border-r-2 border-[#E6E6FA] md:pr-4">
         <img
           src={birthday.avi}
           alt={birthday.name}
           className="w-24 h-24 rounded-full object-cover"
         />
       </div>
-      <div className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-center md:items-start justify-center">
         <h2 className="text-xl font-bold text-[#333333] flex items-center gap-2">
           {birthday.name}
           <a
@@ -81,7 +81,7 @@ export default function BirthdayCard({
           <p className="text-[#333333]">Happy Birthday 🎉</p>
         )}
       </div>
-      <div className="flex flex-col items-center justify-center gap-4 ml-auto">
+      <div className="flex md:flex-col items-center justify-center gap-4 md:ml-auto">
         <Button
           title={<FaTrash />}
           type="button"
@@ -99,7 +99,7 @@ export default function BirthdayCard({
             setIsModalOpen(true);
             window.history.pushState(null, '', `?id=${birthday.id}`);
           }}
-          className="bg-[#dadafc] text-white font-semibold text-lg hover:bg-[#c7c7fc]
+          className="bg-[#c5c5f9] text-white font-semibold text-lg hover:bg-[#a9a9f7]
           flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
       </div>

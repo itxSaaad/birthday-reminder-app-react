@@ -41,7 +41,7 @@ function App() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-[#FFC0CB] p-8">
       <Card>
-        <h1 className="text-2xl font-bold text-center text-[#333333] border-b-2 border-[#E6E6FA] p-2 w-full">
+        <h1 className="text-2xl font-bold text-center text-[#333333] border-b-2 border-[#E6E6FA] p-2">
           Birthday Reminder
         </h1>
 

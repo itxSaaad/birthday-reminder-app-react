@@ -124,7 +124,7 @@ export default function UpdateBirthday({
         type="submit"
         title="Update Birthday"
         onClick={() => {}}
-        className="bg-[#FFFACD] text-[#333333] font-semibold text-lg hover:bg-[#FFF8B7] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
+        className="bg-[#f6ed9f] text-[#333333] font-semibold text-lg hover:bg-[#f6e05e] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
       />
     </form>
   );

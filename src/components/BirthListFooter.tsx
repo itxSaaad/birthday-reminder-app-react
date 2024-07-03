@@ -4,11 +4,11 @@ interface BirthListFooterProps {
 }
 
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import Button from './Button';
 
-import { resetState, clearState } from '../features/slices/birthdaySlice';
-import { toast } from 'react-toastify';
+import { clearState, resetState } from '../features/slices/birthdaySlice';
 
 export default function BirthListFooter({
   setIsModalOpen,
@@ -18,7 +18,7 @@ export default function BirthListFooter({
 
   return (
     <>
-      <div className="flex flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
+      <div className="flex flex-col md:flex-row items-center gap-4 border-b-2 border-[#E6E6FA] p-4 w-full">
         <Button
           title="Add Birthday"
           type="button"
@@ -26,10 +26,10 @@ export default function BirthListFooter({
             setIsModalOpen(true);
             setIsAdding(true);
           }}
-          className="bg-[#FFFACD] text-[#333333] font-semibold text-lg hover:bg-[#FFF8B7] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
+          className="bg-[#f6ed9f] text-[#333333] font-semibold text-lg hover:bg-[#f6e05e] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
       </div>
-      <div className="flex flex-row items-center gap-4 p-4 w-full">
+      <div className="flex flex-col md:flex-row items-center gap-4 p-4 w-full">
         <Button
           title="Clear All"
           type="button"
@@ -46,7 +46,8 @@ export default function BirthListFooter({
             dispatch(resetState());
             toast.success('All birthdays reset');
           }}
-          className="bg-[#98FF98] text-white font-semibold text-lg hover:bg-[#90EE90] flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
+          className="bg-[#8ef18e] text-white font-semibold text-lg hover:bg-[#7bea7b]
+           flex items-center justify-center px-4 py-2 rounded-lg shadow-sm hover:shadow-md w-full transition-all duration-300 ease-in-out"
         />
       </div>
     </>
