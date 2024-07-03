@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import userReducer from './slices/UsersSlice';
+import birthdayReducer from './slices/birthdaySlice';
 
 export const store = configureStore({
   reducer: {
-    users: userReducer,
+    birthday: birthdayReducer,
   },
 });
 
