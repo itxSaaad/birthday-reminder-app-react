@@ -1,5 +1,16 @@
 # Birthday Reminder App - React
 
+## Architecture
+
+```mermaid
+flowchart LR
+  User -->|add, edit, delete, or clear birthday reminders| UI[React birthday list\nVercel deployment]
+  UI --> Redux[Redux Toolkit state]
+  Redux --> Actions[Add, edit, delete, and clear actions]
+  Actions --> Redux
+  Redux --> UI
+```
+
 > A simple Birthday Reminder App built with React.js and Redux/Toolkit. The app allows users to add, edit, delete, and clear all birthdays. The app is fully responsive and user-friendly.
 
 <br />
@@ -123,3 +134,7 @@ Give ⭐️ if you like this project!
 [issues-url]: https://github.com/itxSaaad/birthday-reminder-app-react/issues
 [license-shield]: https://img.shields.io/github/license/itxSaaad/birthday-reminder-app-react.svg?style=for-the-badge
 [license-url]: https://github.com/itxSaaad/birthday-reminder-app-react/blob/main/LICENSE.md
+
+## Vercel Deployment
+Vite SPA served from the repository root; client-side routes rewrite to index.html.
+See the repository-root [vercel.json](./vercel.json) for build roots and routing. Configure private values in Vercel Project Settings; never commit secrets.
